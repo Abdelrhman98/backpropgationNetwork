@@ -20,22 +20,6 @@ def dataSetToArray(dataset, rowSize):
     return rowLst
 
 
-# Load a CSV file
-def load_csv(filename):
-	dataset = list()
-	with open(filename, 'r') as file:
-		csv_reader = reader(file)
-		for row in csv_reader:
-			if not row:
-				continue
-			dataset.append(row)
-	return dataset
-
-# Convert string column to float
-def str_column_to_float(dataset, column):
-	for row in dataset:
-		row[column] = float(row[column].strip())
-
 # Convert string column to integer
 def str_column_to_int(dataset, column):
 	class_values = [row[column] for row in dataset]
@@ -49,7 +33,6 @@ def str_column_to_int(dataset, column):
 
 # Find the min and max values for each column
 def dataset_minmax(dataset):
-	minmax = list()
 	stats = [[min(column), max(column)] for column in zip(*dataset)]
 	return stats
 
@@ -196,14 +179,11 @@ def back_propagation(train, test, l_rate, n_epoch, n_hidden):
 seed(1)
 
 # load and prepare data
-filename = 'glass.csv'
-dataset = load_csv(filename)
-for i in range(len(dataset[0])-1):
-	str_column_to_float(dataset, i)
-
+filename = 'wheat_seeds.csv'
+dataset = pd.read_csv(filename)
+dataset = dataSetToArray(dataset, 8)
 # convert class column to integers
 str_column_to_int(dataset, len(dataset[0])-1)
-print (dataset[79])
 # normalize input variables
 minmax = dataset_minmax(dataset)
 normalize_dataset(dataset, minmax)

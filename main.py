@@ -13,9 +13,9 @@ MIN_HEIGHT = 100
 MAX_HEIGHT = 550 - MIN_HEIGHT
 CIRCLE_RADIUS = 15
 
-nEntered = 7
-lEntered = 10
-mEntered = 2
+nEntered = 3
+lEntered = 2
+mEntered = 3
 
 class DataLists:
     nSet = []
