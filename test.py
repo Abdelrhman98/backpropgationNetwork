@@ -179,7 +179,7 @@ def back_propagation(train, test, l_rate, n_epoch, n_hidden):
 seed(1)
 
 # load and prepare data
-filename = 'wheat_seeds.csv'
+filename = 'breastCancer.csv'
 dataset = pd.read_csv(filename)
 dataset = dataSetToArray(dataset, 8)
 # convert class column to integers
